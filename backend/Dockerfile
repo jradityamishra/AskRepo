@@ -13,6 +13,6 @@ FROM eclipse-temurin:21-jre
 WORKDIR /app
 COPY --from=build /workspace/app.jar app.jar
 
-ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=75 -XX:+UseSerialGC -Djava.security.egd=file:/dev/./urandom"
+ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=70 -XX:+UseSerialGC -XX:TieredStopAtLevel=1 -Xss512k -Djava.security.egd=file:/dev/./urandom"
 EXPOSE 8080
 CMD ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar app.jar"]
