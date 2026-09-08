@@ -4,7 +4,7 @@ export type StreamChatHandler={
     onUserMessage?:(message: ChatMessage)=>void;
     onToken?: (token: string) => void;
     onAssistantMessage?:(message: ChatMessage)=>void;
-    onDone?:(message: ChatMessage)=>void;
+    onDone?:()=>void;
     onError?:(error: ApiError)=>void;
     signal?:AbortSignal;
 }
@@ -35,11 +35,12 @@ export async function streamChatMessage(
     }
 
     const reader=res.body?.getReader();
+    if (!reader) return;
     const decoder=new TextDecoder();
     let buffer="";
 
     while (true) {
-        const {done,value}=await reader?.read();
+        const {done,value}=await reader.read();
         if (done) break;
         buffer+=decoder.decode(value,{stream:true});
         const parts=buffer.split("\n\n");

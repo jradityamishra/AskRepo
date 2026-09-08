@@ -1,8 +1,12 @@
 export const DEFAULT_SCOPES = ["read:user", "user:email", "repo"];
 
-function readEnv(name: string): string | undefined {
-  const value = process.env[name as keyof NodeJS.ProcessEnv];
-  return value && value.length > 0 ? value : undefined;
+// Static references so Next.js can inline these into the client bundle at build time.
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+const GITHUB_CLIENT_ID = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
+const GITHUB_REDIRECT_URI = process.env.NEXT_PUBLIC_GITHUB_REDIRECT_URI;
+
+function nonEmpty(v: string | undefined): string | undefined {
+  return v && v.length > 0 ? v : undefined;
 }
 
 export interface GitHubLoginOptions {
@@ -12,9 +16,9 @@ export interface GitHubLoginOptions {
 }
 
 export function getGitHubLoginUrl(options: GitHubLoginOptions = {}): string {
-  const backendBase = readEnv("NEXT_PUBLIC_BACKEND_URL") ?? "http://localhost:8080";
-  const clientId = readEnv("NEXT_PUBLIC_GITHUB_CLIENT_ID");
-  const redirectUri = readEnv("NEXT_PUBLIC_GITHUB_REDIRECT_URI");
+  const backendBase = nonEmpty(BACKEND_URL) ?? "http://localhost:8080";
+  const clientId = nonEmpty(GITHUB_CLIENT_ID);
+  const redirectUri = nonEmpty(GITHUB_REDIRECT_URI);
 
   // Prefer routing through the backend's Spring Security OAuth2 entrypoint.
   if (!clientId || !redirectUri) {
