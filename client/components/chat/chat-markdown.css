@@ -1,0 +1,162 @@
+.chat-markdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  overflow-wrap: anywhere;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.chat-markdown > *:first-child {
+  margin-top: 0;
+}
+.chat-markdown > *:last-child {
+  margin-bottom: 0;
+}
+
+.chat-markdown p {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.chat-markdown h1,
+.chat-markdown h2,
+.chat-markdown h3,
+.chat-markdown h4 {
+  margin: 0.2rem 0 0;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.chat-markdown h1 {
+  font-size: 1.25rem;
+}
+.chat-markdown h2 {
+  font-size: 1.125rem;
+}
+.chat-markdown h3 {
+  font-size: 1rem;
+}
+.chat-markdown h4 {
+  font-size: 0.925rem;
+}
+
+.chat-markdown ul,
+.chat-markdown ol {
+  margin: 0;
+  padding-left: 1.35rem;
+  line-height: 1.65;
+}
+
+.chat-markdown li {
+  margin: 0.15rem 0;
+}
+
+.chat-markdown li > p {
+  margin: 0;
+}
+
+.chat-markdown a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.chat-markdown hr {
+  margin: 0.25rem 0;
+  border: none;
+  border-top: 1px solid color-mix(in oklch, currentColor 15%, transparent);
+}
+
+.chat-markdown blockquote {
+  margin: 0;
+  padding-left: 0.85rem;
+  border-left: 3px solid color-mix(in oklch, currentColor 25%, transparent);
+  color: color-mix(in oklch, currentColor 75%, transparent);
+}
+
+.chat-markdown table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.88em;
+}
+
+.chat-markdown th,
+.chat-markdown td {
+  border: 1px solid color-mix(in oklch, currentColor 15%, transparent);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+
+.chat-markdown th {
+  font-weight: 600;
+  background: color-mix(in oklch, currentColor 6%, transparent);
+}
+
+.chat-markdown code {
+  background: color-mix(in oklch, currentColor 12%, transparent);
+  border-radius: 0.3rem;
+  padding: 0.15rem 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+}
+
+.chat-markdown .code-block {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px color-mix(in oklch, currentColor 10%, transparent);
+}
+
+.chat-markdown .code-block pre {
+  margin: 0 !important;
+}
+
+.chat-markdown .code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: color-mix(in oklch, var(--foreground), black 15%);
+  color: var(--background);
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+}
+
+.chat-markdown .code-block-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 0.7rem;
+  font-family: inherit;
+  cursor: pointer;
+  opacity: 0.75;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.3rem;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.chat-markdown .code-block-copy:hover {
+  opacity: 1;
+  background: color-mix(in oklch, var(--background) 15%, transparent);
+}
+
+.chat-markdown .mermaid-diagram {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  background: color-mix(in oklch, currentColor 4%, transparent);
+  padding: 1rem;
+}
+
+.chat-markdown .mermaid-diagram svg {
+  max-width: 100%;
+  height: auto;
+}
+
