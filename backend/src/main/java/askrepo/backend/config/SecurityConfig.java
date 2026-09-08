@@ -61,7 +61,7 @@ public class SecurityConfig {
                     response.setStatus(HttpStatus.NO_CONTENT.value()))
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
-                .deleteCookies("PROD_SESSION")
+                .deleteCookies("ASKREPO_SESSION")
             );
         return http.build();
     }
