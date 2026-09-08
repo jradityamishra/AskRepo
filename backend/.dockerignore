@@ -1,0 +1,10 @@
+target/
+!target/*.jar
+.idea/
+.vscode/
+*.iml
+.git/
+.gitignore
+HELP.md
+README.md
+src/main/resources/.env
